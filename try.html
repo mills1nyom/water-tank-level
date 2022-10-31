@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOT</title>
+</head>
+<body>
+    <style>
+     *{box-sizing: border-box;
+  font-family:  sans-serif;
+  font-size: 1.5rem;
+  font-weight: normal;}
+
+  body{
+    padding: 0;
+  margin: 0;
+  background: linear-gradient(to right, #00AAFF, #00FF6C);
+
+  }
+
+  .box{
+    display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+
+  }
+
+  .btn{
+    cursor: pointer;
+  
+  border: 1px solid white;
+  border-radius: 10px;
+  outline: none;
+  background-color: rgba(255, 255, 255, .75);
+  }
+
+  .btn:hover {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.report {
+    margin-top: 35px;
+    padding-right: 50px;
+    cursor: pointer;
+  
+  
+  border-radius: 10px;
+  outline: none;
+
+}
+
+
+    </style>
+    <div class='box'>
+ <h1 class="heading">IOT MIDSEM</h1>
+ <div>
+     <h2>Water level for tank 1 is: <span id="getTank1">CM</span></h2>
+ </div>
+ <div>
+     <h2>Water level for tank 2 is: <span id="getTank2">CM </h2>
+ </div>
+ 
+     <h2>Control Motor</h2>
+     <div>
+         <button class="btn" onclick='MS()'>Manually - Start</button>
+         <button class="btn" onclick='MSt()'>Manually - Stop</button>
+         <button class="btn" onclick='A()'>Automatic</button>
+     </div>
+     <div class="report">
+        <button>
+            <a target="_blank" href="http://localhost/IOTLAB5/index.php">Water Level Report</a>
+        </button>
+     </div>
+ </div>
+
+
+</div>
+<script>
+
+setInterval(function() { getTank1(); /*getTank2()*/;}, 500);
+function getTank1() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("getTank1").innerHTML =this.responseText;
+    }
+  };
+  xhttp.open("GET", "readTank1", true);
+  xhttp.send();
+}
+function MS() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {};
+  xhttp.open("GET", "MS", true);
+  xhttp.send();
+}
+function MSt() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {};
+  xhttp.open("GET", "MSt", true);
+  xhttp.send();
+}
+function A() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {};
+  xhttp.open("GET", "A", true);
+  xhttp.send();
+}
+
+</script>
+</body>
+</html>
